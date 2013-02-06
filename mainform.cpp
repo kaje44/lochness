@@ -3,7 +3,7 @@
 **                                                                  **
 **  Vytvořen: po 31.12.2012 08:28:05                                **
 **                                                                  **
-**  Posledni upravy: Út 05.úno.2013 08:39:09                        **
+**  Posledni upravy: St 06.úno.2013 09:01:26                        **
 *********************************************************************/
 
 #include <QtGui>
@@ -21,9 +21,9 @@ KjSysLog syslog;
 MainForm::MainForm() : QMainWindow() {
 	setupUi(this);
 
-	QString ver = QString("$build v1.0.8$");
+	QString ver = QString("$build v1.1.1$");
 	ver.replace("$"," ").replace("build"," ");
-	setWindowTitle(QString("%1 %2 ").arg("Kalendář").arg(ver.trimmed()));
+	setWindowTitle(QString("%1 %2 ").arg().arg(ver.trimmed()));
 	setWindowIcon(QIcon(":img/kalendar.jpg"));
 
 	m_rootDir = QCoreApplication::applicationDirPath()+"/";
