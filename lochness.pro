@@ -3,7 +3,7 @@
 #                                                                    #
 #  Vytvořen: po 31.12.2012 08:28:05                                  #
 #                                                                    #
-#  Posledni upravy: St 06.úno.2013 14:49:29                        **
+#  Posledni upravy: St 06.úno.2013 15:01:06                        **
 ######################################################################
 TEMPLATE	= app
 DESTDIR	= dist
@@ -13,6 +13,7 @@ INCLUDEPATH	+= ./bibliothek
 DEPENDPATH	+= ./bibliothek
 
 win32 { 
+	RC_FILE = lochness.rc
 	LIBS += "C:\Qt\sqlite\sqlite3.lib"
 } else {
 	LIBS += -lsqlite3
