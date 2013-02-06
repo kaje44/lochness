@@ -21,7 +21,7 @@ KjSysLog syslog;
 MainForm::MainForm() : QMainWindow() {
 	setupUi(this);
 
-	QString ver = QString("$build v1.1.1$");
+	QString ver = QString("$build v1.1.2$");
 	ver.replace("$"," ").replace("build"," ");
 	setWindowTitle(QString("%1 %2 ").arg().arg(ver.trimmed()));
 	setWindowIcon(QIcon(":img/kalendar.jpg"));
