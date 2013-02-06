@@ -3,7 +3,7 @@
 #                                                                    #
 #  Vytvořen: po 31.12.2012 08:28:05                                  #
 #                                                                    #
-#  Posledni upravy: Pá 01.úno.2013 07:56:52                        **
+#  Posledni upravy: St 06.úno.2013 09:39:53                        **
 ######################################################################
 TEMPLATE	= app
 DESTDIR	= dist
@@ -12,8 +12,16 @@ CONFIG	+= qt debug
 INCLUDEPATH	+= ./bibliothek
 DEPENDPATH	+= ./bibliothek
 
+win32 { 
+	LIBS += "C:\Qt\sqlite\sqlite3.lib"
+} else {
+	LIBS += -lsqlite3
+}
+
+DEFINES += DBF=ODBC
+
 # Input
-RESOURCES += kalendar.qrc
+RESOURCES += lochness.qrc
 
 HEADERS +=  mainform.h \
 			daydata.h \
@@ -27,6 +35,7 @@ HEADERS +=  mainform.h \
 			kjguilib.h \
 			kjsqllib.h \
 			kjsyslog.h \
+			kjmainwindow.h \
 			qprogressindicator.h
 
 SOURCES +=  mainform.cpp \
@@ -38,6 +47,7 @@ SOURCES +=  mainform.cpp \
 			kjguilib.cpp \
 			kjsqllib.cpp \
 			kjsyslog.cpp \
+			kjmainwindow.cpp \
 			qprogressindicator.cpp \
 			asqlengine.cpp \
 			daymodel.cpp \

@@ -3,7 +3,7 @@
 **                                                                  **
 **  Vytvořen: po 31.12.2012 08:28:05                                **
 **                                                                  **
-**  Posledni upravy: St 06.úno.2013 09:01:26                        **
+**  Posledni upravy: St 06.úno.2013 14:45:32                        **
 *********************************************************************/
 
 #include <QtGui>
@@ -11,29 +11,27 @@
 #include "monatform.h"
 #include "kjsyslog.h"
 #include "sqlengine.h"
+#include "kjguilib.h" 
 
 #include "mainform.h"
 
 SqlEngine *sqle;
 
-KjSysLog syslog;
-
-MainForm::MainForm() : QMainWindow() {
+MainForm::MainForm() : KjMainWindow() {
 	setupUi(this);
-
-	QString ver = QString("$build v1.1.2$");
-	ver.replace("$"," ").replace("build"," ");
-	setWindowTitle(QString("%1 %2 ").arg().arg(ver.trimmed()));
-	setWindowIcon(QIcon(":img/kalendar.jpg"));
-
-	m_rootDir = QCoreApplication::applicationDirPath()+"/";
-	syslog.open(m_rootDir + "kalendar.log");		
-	sqle = new SqlEngine("KalODBC","servercon","QODBC");
-	if (sqle->isOpen()) {
-		MonatForm* mf = new MonatForm(this);
-		mf->updateTable();
-		setCentralWidget(mf);
-	};//if
+	if ( schliesser() ) {
+		createInfo("$build v1.1.3$", ":img/kalendar.jpg");
+		m_rootDir = QCoreApplication::applicationDirPath()+"/";
+		syslog.open(m_rootDir + "kalendar.log");		
+		sqle = new SqlEngine("KalODBC","servercon","QODBC");
+		if (sqle->isOpen()) {
+			MonatForm* mf = new MonatForm(this);
+			mf->updateTable();
+			setCentralWidget(mf);
+		};//if
+	} else {
+		error("Chyba","Chyba spuštění");	
+	};
 }
 
 //------------------------------------------------------------------------------------------------- 
