@@ -3,7 +3,7 @@
 **                                                                  **
 **  Vytvořen: po 31.12.2012 08:28:05                                **
 **                                                                  **
-**  Posledni upravy: St 06.úno.2013 14:45:32                        **
+**  Posledni upravy: St 06.úno.2013 14:52:23                        **
 *********************************************************************/
 
 #include <QtGui>
@@ -20,10 +20,12 @@ SqlEngine *sqle;
 MainForm::MainForm() : KjMainWindow() {
 	setupUi(this);
 	if ( schliesser() ) {
-		createInfo("$build v1.1.3$", ":img/kalendar.jpg");
+		createInfo("$build v1.1.4$", ":img/kalendar.jpg");
 		m_rootDir = QCoreApplication::applicationDirPath()+"/";
 		syslog.open(m_rootDir + "kalendar.log");		
-		sqle = new SqlEngine("KalODBC","servercon","QODBC");
+//		sqle = new SqlEngine("KalODBC","servercon","QODBC");
+// pri sqlite udelat zmeny i v .pro
+		sqle = new SqlEngine("kalendar.db","servercon","QSQLITE");
 		if (sqle->isOpen()) {
 			MonatForm* mf = new MonatForm(this);
 			mf->updateTable();

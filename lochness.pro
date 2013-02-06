@@ -3,7 +3,7 @@
 #                                                                    #
 #  Vytvořen: po 31.12.2012 08:28:05                                  #
 #                                                                    #
-#  Posledni upravy: St 06.úno.2013 09:39:53                        **
+#  Posledni upravy: St 06.úno.2013 14:49:29                        **
 ######################################################################
 TEMPLATE	= app
 DESTDIR	= dist
