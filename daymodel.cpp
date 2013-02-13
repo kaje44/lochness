@@ -3,7 +3,7 @@
 **                                                                  **
 **  Vytvořen: Po 31.pro.2012 08:56:03                               **
 **                                                                  **
-**  Posledni upravy: Ne 03.úno.2013 10:09:58                        **
+**  Posledni upravy: St 13.úno.2013 09:08:35                        **
 **********************************************************************/
 
 #include <QtGui>
@@ -92,6 +92,9 @@ bool DayModel::dropMimeData(const QMimeData *data,Qt::DropAction action, int row
 	 		QByteArray encodedData = data->data(MIME_TYPE);
      		QDataStream stream(&encodedData, QIODevice::ReadOnly);
 			stream >> id >> text >> date >> zeit >> farbe >> icon;
+			if ( date == m_date ) {
+				return false;	
+			}
 			DayData *dd = new DayData;
 			dd->setDayData ( text ,m_date ,zeit, farbe , icon ,id);
 			addDayData(dd,true);
